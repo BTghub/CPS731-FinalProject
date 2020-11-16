@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">DatabaseUI</string>
+    <string name="view_work">View Work</string>
+    <string name="view_events">View Events</string>
+    <string name="view_courses">View Courses</string>
+    <string name="add_work">Add Work</string>
+    <string name="add_event">Add Event</string>
+    <string name="add_course">Add Course</string>
+    <string name="empty_not_saved">No data added.</string>
+    <string name="mark_as_completed">Mark as Completed</string>
+    <string name="view_completed_tasks">View Completed Tasks</string>
+    <string-array name="courses">
+        <item>CPS</item>
+        <item>ENG</item>
+    </string-array>
+    <string-array name="workTypes">
+        <item>Assignment</item>
+        <item>Reading</item>
+        <item>Test</item>
+        <item>Quiz</item>
+    </string-array>
+</resources>
