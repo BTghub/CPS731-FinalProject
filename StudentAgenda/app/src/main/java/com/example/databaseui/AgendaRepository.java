@@ -1,10 +1,18 @@
 package com.example.databaseui;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.Observer;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class AgendaRepository {
@@ -12,15 +20,20 @@ public class AgendaRepository {
     private LiveData<List<Course>> mAllCourses;
     private EventDao mEventDao;
     private LiveData<List<Event>> mAllEvents;
+    private LiveData<List<Event>> mTodayEvents;
     private WorkDao mWorkDao;
     private LiveData<List<Work>> mAllWork;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     AgendaRepository(Application app) {
         AgendaRoomDatabase db = AgendaRoomDatabase.getDatabase(app);
         mCourseDao = db.courseDao();
         mAllCourses = mCourseDao.getAllCourses();
+
         mEventDao = db.eventDao();
         mAllEvents = mEventDao.getAllEvents();
+        mTodayEvents = mEventDao.getTodaysEvents(LocalDate.now().toString());
+
         mWorkDao = db.workDao();
         mAllWork = mWorkDao.getAllWork();
     }
@@ -31,8 +44,17 @@ public class AgendaRepository {
     LiveData<List<Event>> getmAllEvents() {
         return mAllEvents;
     }
+    LiveData<List<Event>> getmTodayEvents() { return mTodayEvents; }
     LiveData<List<Work>> getmAllWork() {
         return mAllWork;
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    LiveData<List<Work>> getTodaysWork(int T, int A, int Q, int R) {
+        String rT = LocalDate.now().plusDays(T).toString();
+        String rA = LocalDate.now().plusDays(A).toString();
+        String rQ = LocalDate.now().plusDays(Q).toString();
+        String rR = LocalDate.now().plusDays(R).toString();
+        return mWorkDao.getTodaysWork(rT,rA,rQ,rR);
     }
 
     public void insertCourse(Course course) {

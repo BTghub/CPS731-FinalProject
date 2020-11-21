@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WorkDetailsActivity extends AppCompatActivity {
-    private AgendaviewModel mAgendaViewModel;
+    private AgendaViewModel mAgendaViewModel;
     private DocumentReference mDocRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class WorkDetailsActivity extends AppCompatActivity {
         descTxt.setText("Description: " + desc);
 
         mDocRef = FirebaseFirestore.getInstance().document("CompletedTasks/" + wid);
-        mAgendaViewModel = ViewModelProviders.of(this).get(AgendaviewModel.class);
+        mAgendaViewModel = ViewModelProviders.of(this).get(AgendaViewModel.class);
         Button markCompleted = findViewById(R.id.btn_completed);
         markCompleted.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)

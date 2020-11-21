@@ -16,4 +16,6 @@ public interface EventDao {
     void deleteAll();
     @Query("SELECT * from Event ORDER BY date ASC")
     LiveData<List<Event>> getAllEvents();
+    @Query("SELECT * FROM Event WHERE date=:today")
+    LiveData<List<Event>> getTodaysEvents(String today);
 }

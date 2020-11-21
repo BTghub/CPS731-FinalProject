@@ -85,6 +85,10 @@ public class AddEvent extends AppCompatActivity {
         });
 
         //Date Button Functionality
+        Calendar c = Calendar.getInstance();
+        final int todayY = c.get(Calendar.YEAR);
+        final int todayM = c.get(Calendar.MONTH);
+        final int todayD = c.get(Calendar.DAY_OF_MONTH);
         pickDate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 DatePickerDialog dPD = new DatePickerDialog(
@@ -101,9 +105,9 @@ public class AddEvent extends AppCompatActivity {
 
                                 showDate.setText(DateFormat.format("yyyy-MM-dd", calendar));
                             }
-                        }, 2020, 1, 1
+                        }, todayY, todayM, todayD
                 );
-                dPD.updateDate(d1Year, d1Month, d1DayOf);
+                //dPD.updateDate(d1Year, d1Month, d1DayOf);
                 dPD.show();
             }
         });

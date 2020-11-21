@@ -31,7 +31,7 @@ public class WorkListAdapter extends RecyclerView.Adapter<WorkListAdapter.WordVi
     public void onBindViewHolder(WordViewHolder holder, int position) {
         if (mWork != null) {
             Work current = mWork.get(position);
-            holder.wordItemView.setText(current.course + ": " + current.workType + " due: " + current.dueDate);
+            holder.wordItemView.setText(current.course + ": " + current.workType + "   due: " + current.dueDate);
         } else {
             // Covers the case of data not being ready yet.
             holder.wordItemView.setText("No Work");

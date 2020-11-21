@@ -13,9 +13,13 @@ import java.util.List;
 public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.CourseViewHolder> {
 
     private final LayoutInflater mInflater;
-    private List<Course> mCourses; // Cached copy of Courses
+    public List<Course> mCourses; // Cached copy of Courses
+    private final CourseListAdapter.ListItemClickListener mOnClickListener;
 
-    CourseListAdapter(Context context) { mInflater = LayoutInflater.from(context); }
+    CourseListAdapter(Context context, CourseListAdapter.ListItemClickListener onClickListener) {
+        mInflater = LayoutInflater.from(context);
+        mOnClickListener = onClickListener;
+    }
 
     @Override
     public CourseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -48,12 +52,24 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
         else return 0;
     }
 
-    class CourseViewHolder extends RecyclerView.ViewHolder {
+    class CourseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView CourseItemView;
 
         private CourseViewHolder(View itemView) {
             super(itemView);
             CourseItemView = itemView.findViewById(R.id.textView);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            mOnClickListener.onListItemClick(position);
+        }
+    }
+
+    // Implement clickable items
+    interface ListItemClickListener{
+        void onListItemClick(int position);
     }
 }

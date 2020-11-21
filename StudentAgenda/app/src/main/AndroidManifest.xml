@@ -9,9 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewCompletedTasks"
-            android:parentActivityName=".MainActivity">
+        <activity android:name=".CourseDetailsActivity"
+            android:parentActivityName=".ViewCourses">
         </activity>
+        <activity
+            android:name=".ViewTodaysWork"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".ViewTodaysEvents"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".EditSettings" />
+        <activity
+            android:name=".Settings"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ViewCompletedTasks"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".WorkDetailsActivity"
             android:parentActivityName=".ViewWork" />

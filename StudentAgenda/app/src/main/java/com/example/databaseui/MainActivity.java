@@ -11,16 +11,17 @@ import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private AgendaviewModel mAgendaViewModel;
+    private AgendaViewModel mAgendaViewModel;
     public static final int ADD_COURSE_ACTIVITY_REQUEST_CODE = 1;
     public static final int ADD_EVENT_ACTIVITY_REQUEST_CODE = 2;
     public static final int ADD_WORK_ACTIVITY_REQUEST_CODE = 3;
+    public static final String prefs = "MySettings";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAgendaViewModel = ViewModelProviders.of(this).get(AgendaviewModel.class);
+        mAgendaViewModel = ViewModelProviders.of(this).get(AgendaViewModel.class);
 
         //Add Course Button launches AddCourse Activity
         Button btn_add_course = (Button) findViewById(R.id.btn_add_course);
@@ -82,6 +83,36 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ViewCompletedTasks.class);
+                startActivity(intent);
+            }
+        });
+
+        //Settings button launches Settings Activity
+        Button btn_settings = findViewById(R.id.btn_settings);
+        btn_settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Settings.class);
+                startActivity(intent);
+            }
+        });
+
+        //Todays Events button launches ViewTodaysEvents Activity
+        Button btn_todays_events = findViewById(R.id.btn_todays_events);
+        btn_todays_events.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ViewTodaysEvents.class);
+                startActivity(intent);
+            }
+        });
+
+        //Todays work button launches ViewTodaysWork Activity
+        Button btn_todays_work = findViewById(R.id.btn_todays_work);
+        btn_todays_work.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ViewTodaysWork.class);
                 startActivity(intent);
             }
         });

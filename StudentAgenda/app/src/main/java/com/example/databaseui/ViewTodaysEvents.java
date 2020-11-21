@@ -11,12 +11,12 @@ import android.os.Bundle;
 
 import java.util.List;
 
-public class ViewEvents extends AppCompatActivity {
+public class ViewTodaysEvents extends AppCompatActivity {
     private AgendaViewModel mAgendaViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_events);
+        setContentView(R.layout.activity_view_todays_events);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
@@ -26,7 +26,7 @@ public class ViewEvents extends AppCompatActivity {
 
         mAgendaViewModel = ViewModelProviders.of(this).get(AgendaViewModel.class);
 
-        mAgendaViewModel.getAllEvents().observe(this, new Observer<List<Event>>() {
+        mAgendaViewModel.getTodayEvents().observe(this, new Observer<List<Event>>() {
             @Override
             public void onChanged(@Nullable final List<Event> event) {
                 // Update the cached copy of the words in the adapter.

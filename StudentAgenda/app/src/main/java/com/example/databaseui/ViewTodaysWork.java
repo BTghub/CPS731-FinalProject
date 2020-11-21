@@ -1,25 +1,29 @@
 package com.example.databaseui;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import java.util.List;
 
-public class ViewWork extends AppCompatActivity implements WorkListAdapter.ListItemClickListener {
+public class ViewTodaysWork extends AppCompatActivity implements WorkListAdapter.ListItemClickListener {
     private AgendaViewModel mAgendaViewModel;
     private WorkListAdapter adapter;
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_work);
+        setContentView(R.layout.activity_view_todays_work);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
@@ -27,9 +31,14 @@ public class ViewWork extends AppCompatActivity implements WorkListAdapter.ListI
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mAgendaViewModel = ViewModelProviders.of(this).get(AgendaViewModel.class);
+        SharedPreferences sp = getSharedPreferences(MainActivity.prefs, Context.MODE_PRIVATE);
+        int T = sp.getInt("test_days", 4);
+        int A = sp.getInt("assignment_days", 3);
+        int Q = sp.getInt("quiz_days", 1);
+        int R = sp.getInt("reading_days", 1);
 
-        mAgendaViewModel.getAllWork().observe(this, new Observer<List<Work>>() {
+        mAgendaViewModel = ViewModelProviders.of(this).get(AgendaViewModel.class);
+        mAgendaViewModel.getTodaysWork(T,A,Q,R).observe(this, new Observer<List<Work>>() {
             @Override
             public void onChanged(@Nullable final List<Work> work) {
                 // Update the cached copy of the words in the adapter.
@@ -40,7 +49,7 @@ public class ViewWork extends AppCompatActivity implements WorkListAdapter.ListI
 
     @Override
     public void onListItemClick(int position) {
-        Intent i = new Intent(ViewWork.this, WorkDetailsActivity.class);
+        Intent i = new Intent(ViewTodaysWork.this, WorkDetailsActivity.class);
         Work obj = adapter.mWork.get(position);
         // Add item details to intent
         i.putExtra("id", obj.work_id);
