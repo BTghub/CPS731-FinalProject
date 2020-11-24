@@ -16,4 +16,6 @@ public interface CourseDao {
     void deleteAll();
     @Query("SELECT * from Course ORDER BY title ASC")
     LiveData<List<Course>> getAllCourses();
+    @Query("DELETE FROM Course WHERE title=:courseName")
+    void deleteCourse(String courseName);
 }

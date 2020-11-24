@@ -80,6 +80,24 @@ public class AgendaRepository {
             return null;
         }
     }
+
+    public void deleteCourse(Course course) {
+        new deleteCourseAsyncTask(mCourseDao).execute(course);
+    }
+    private static class deleteCourseAsyncTask extends AsyncTask<Course,Void,Void> {
+        private CourseDao mAsyncTaskDao;
+
+        deleteCourseAsyncTask(CourseDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Course... params) {
+            mAsyncTaskDao.deleteCourse(params[0].title);
+            return null;
+        }
+    }
+
     private static class insertEventAsyncTask extends AsyncTask<Event,Void,Void> {
         private EventDao mAsyncTaskDao;
 
@@ -93,6 +111,24 @@ public class AgendaRepository {
             return null;
         }
     }
+
+    public void deleteEvent(Event event) {
+        new deleteEventAsyncTask(mEventDao).execute(event);
+    }
+    private static class deleteEventAsyncTask extends AsyncTask<Event,Void,Void> {
+        private EventDao mAsyncTaskDao;
+
+        deleteEventAsyncTask(EventDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Event... params) {
+            mAsyncTaskDao.deleteEvent(params[0].event_id);
+            return null;
+        }
+    }
+
     private static class insertWorkAsyncTask extends AsyncTask<Work,Void,Void> {
         private WorkDao mAsyncTaskDao;
 

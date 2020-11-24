@@ -38,7 +38,9 @@ public class AgendaViewModel extends AndroidViewModel {
     }
 
     public void insertCourse(Course course) { mRepo.insertCourse(course); }
+    public void deleteCourse(Course course) { mRepo.deleteCourse(course); }
     public void insertEvent(Event event) { mRepo.insertEvent(event); }
+    public void deleteEvent(Event event) { mRepo.deleteEvent(event); }
     public void insertWork(Work work) { mRepo.insertWork(work); }
     public void deleteWork(Work work) { mRepo.deleteWork(work); }
 }

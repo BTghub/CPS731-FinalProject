@@ -13,9 +13,13 @@ import java.util.List;
 public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.EventViewHolder> {
 
     private final LayoutInflater mInflater;
-    private List<Event> mEvents; // Cached copy of Events
+    public List<Event> mEvents; // Cached copy of Events
+    private final EventListAdapter.ListItemClickListener mOnClickListener;
 
-    EventListAdapter(Context context) { mInflater = LayoutInflater.from(context); }
+    EventListAdapter(Context context, EventListAdapter.ListItemClickListener onClickListener) {
+        mInflater = LayoutInflater.from(context);
+        mOnClickListener = onClickListener;
+    }
 
     @Override
     public EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -48,12 +52,24 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         else return 0;
     }
 
-    class EventViewHolder extends RecyclerView.ViewHolder {
+    class EventViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView EventItemView;
 
         private EventViewHolder(View itemView) {
             super(itemView);
             EventItemView = itemView.findViewById(R.id.textView);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            mOnClickListener.onListItemClick(position);
+        }
+    }
+
+    // Implement clickable items
+    interface ListItemClickListener{
+        void onListItemClick(int position);
     }
 }

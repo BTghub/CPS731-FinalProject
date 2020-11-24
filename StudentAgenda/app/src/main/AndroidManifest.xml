@@ -9,12 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CourseDetailsActivity"
-            android:parentActivityName=".ViewCourses">
+        <activity android:name=".EventDetailsActivity"
+            android:parentActivityName=".ViewEvents">
         </activity>
         <activity
+            android:name=".CourseDetailsActivity"
+            android:parentActivityName=".ViewCourses"></activity>
+        <activity
             android:name=".ViewTodaysWork"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ViewTodaysEvents"
             android:parentActivityName=".MainActivity" />

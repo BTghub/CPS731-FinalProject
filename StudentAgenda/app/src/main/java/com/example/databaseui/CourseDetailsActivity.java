@@ -1,6 +1,7 @@
 package com.example.databaseui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class CourseDetailsActivity extends AppCompatActivity {
-
+    private AgendaViewModel mAgendaViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,18 @@ public class CourseDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //access profile from the web
+            }
+        });
+
+        mAgendaViewModel = ViewModelProviders.of(this).get(AgendaViewModel.class);
+        Button delete_course = findViewById(R.id.btn_delete_course);
+        delete_course.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Update local db to reflect changes
+                Course course = new Course(title,"");
+                mAgendaViewModel.deleteCourse(course);
+                finish();
             }
         });
     }

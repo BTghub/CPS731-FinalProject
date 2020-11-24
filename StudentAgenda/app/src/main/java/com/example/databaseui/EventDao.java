@@ -18,4 +18,6 @@ public interface EventDao {
     LiveData<List<Event>> getAllEvents();
     @Query("SELECT * FROM Event WHERE date=:today")
     LiveData<List<Event>> getTodaysEvents(String today);
+    @Query("DELETE FROM Event WHERE event_id=:eid")
+    void deleteEvent(int eid);
 }
