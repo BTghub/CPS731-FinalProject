@@ -28,11 +28,11 @@ public class EventDetailsActivity extends AppCompatActivity {
         final String start = i.getStringExtra("start");
         final String end = i.getStringExtra("end");
 
-        TextView titleTxt = findViewById(R.id.txteTitle);
-        TextView locTxt = findViewById(R.id.txteLocation);
-        TextView dateTxt = findViewById(R.id.txteDate);
-        TextView startTxt = findViewById(R.id.txtFrom);
-        TextView endTxt = findViewById(R.id.txtTo);
+        TextView titleTxt = findViewById(R.id.txtTitle);
+        TextView locTxt = findViewById(R.id.txtLoc);
+        TextView dateTxt = findViewById(R.id.txtDate);
+        TextView startTxt = findViewById(R.id.txtSTime);
+        TextView endTxt = findViewById(R.id.txtETime);
 
         titleTxt.setText("Title: " + title);
         locTxt.setText("Location: " + location);

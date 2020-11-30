@@ -25,7 +25,7 @@ public class ViewCompletedTasks extends AppCompatActivity {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 String restxt = "";
                 for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
-                    restxt = restxt + doc.getString("course") + ": " + doc.getString("description") + "\n";
+                    restxt = restxt + "◘" + doc.getString("course") + ": " + doc.getString("description") + "\n";
                 }
                 res.setText(restxt);
             }

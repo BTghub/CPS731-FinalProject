@@ -10,7 +10,10 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="30dp"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:padding="25sp"
+        android:textSize="25sp"
         android:text="Email:" />
 
     <TextView
@@ -19,9 +22,9 @@
         android:layout_height="wrap_content"
         android:layout_row="1"
         android:layout_column="0"
-        android:padding="30dp"
-        android:paddingTop="30dp"
-        android:paddingBottom="30dp"
+        android:layout_columnSpan="2"
+        android:padding="25sp"
+        android:textSize="30sp"
         android:text="Days of Reminder"
         android:textStyle="bold" />
 
@@ -31,7 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_row="2"
         android:layout_column="0"
-        android:padding="30dp"
+        android:padding="25sp"
+        android:textSize="25sp"
         android:text="Test:" />
 
     <TextView
@@ -40,7 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_row="3"
         android:layout_column="0"
-        android:padding="30dp"
+        android:padding="25sp"
+        android:textSize="25sp"
         android:text="Assignment:" />
 
     <TextView
@@ -49,7 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_row="4"
         android:layout_column="0"
-        android:padding="30dp"
+        android:padding="25sp"
+        android:textSize="25sp"
         android:text="Reading:" />
 
     <EditText
@@ -58,10 +64,10 @@
         android:layout_height="wrap_content"
         android:layout_row="2"
         android:layout_column="1"
-        android:ems="10"
+        android:ems="7"
         android:hint="Enter a number"
         android:inputType="number"
-        android:textSize="12sp" />
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/editAssignmentDays"
@@ -69,10 +75,10 @@
         android:layout_height="wrap_content"
         android:layout_row="3"
         android:layout_column="1"
-        android:ems="10"
+        android:ems="7"
         android:hint="Enter a number"
         android:inputType="number"
-        android:textSize="12sp" />
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/editReadingDays"
@@ -80,11 +86,11 @@
         android:layout_height="wrap_content"
         android:layout_row="4"
         android:layout_column="1"
-        android:ems="10"
+        android:ems="7"
         android:hint="Enter a number"
         android:importantForAutofill="no"
         android:inputType="number"
-        android:textSize="12sp" />
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/editEmail"
@@ -92,17 +98,10 @@
         android:layout_height="wrap_content"
         android:layout_row="0"
         android:layout_column="1"
-        android:ems="10"
+        android:ems="8"
+        android:textSize="20sp"
         android:hint="Enter email address"
         android:inputType="textEmailAddress" />
-
-    <Button
-        android:id="@+id/btn_save_settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="6"
-        android:layout_column="1"
-        android:text="Save" />
 
     <TextView
         android:id="@+id/textView3"
@@ -110,15 +109,33 @@
         android:layout_height="wrap_content"
         android:layout_row="5"
         android:layout_column="0"
-        android:padding="30dp"
+        android:padding="30sp"
+        android:textSize="25sp"
         android:text="Quiz:" />
 
     <EditText
         android:id="@+id/editQuizDays"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="7"
         android:hint="Enter a number"
         android:inputType="number"
-        android:textSize="12sp" />
+        android:textSize="25sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="213dp"
+        android:layout_row="6"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:gravity="bottom">
+
+        <Button
+            android:id="@+id/btn_save_settings"
+            android:layout_width="match_parent"
+            android:layout_height="100sp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Save"
+            android:textSize="25sp" />
+    </RelativeLayout>
 </android.widget.GridLayout>

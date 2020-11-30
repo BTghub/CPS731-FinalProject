@@ -1,90 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_add_course"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_course"
-        />
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="75sp"
+                android:layout_height="75sp"
+                android:src="@drawable/view_icon_playstore"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:text="View"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_add_event"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_event"
-        android:layout_column="0"
-        android:layout_row="1"
-        />
+        <Button
+            android:id="@+id/btn_view_courses"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/course" />
 
-    <Button
-        android:id="@+id/btn_add_work"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_work"
-        android:layout_column="0"
-        android:layout_row="2"
-        />
+        <Button
+            android:id="@+id/btn_view_events"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event" />
 
-    <Button
-        android:id="@+id/btn_view_courses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="3"
-        android:layout_column="0"
-        android:text="@string/view_courses" />
+        <Button
+            android:id="@+id/btn_view_work"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/work" />
 
-    <Button
-        android:id="@+id/btn_view_events"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="4"
-        android:layout_column="0"
-        android:text="@string/view_events" />
+        <Button
+            android:id="@+id/btn_view_completed"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view_completed_tasks" />
 
-    <Button
-        android:id="@+id/btn_view_work"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="5"
-        android:layout_column="0"
-        android:text="@string/view_work" />
+        <Button
+            android:id="@+id/btn_todays_work"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/today_s_work" />
 
-    <Button
-        android:id="@+id/btn_view_completed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="6"
-        android:layout_column="0"
-        android:text="@string/view_completed_tasks" />
+        <Button
+            android:id="@+id/btn_todays_events"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/today_s_events" />
 
-    <Button
-        android:id="@+id/btn_settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="7"
-        android:layout_column="0"
-        android:text="@string/settings" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="25sp">
 
-    <Button
-        android:id="@+id/btn_todays_work"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="5"
-        android:layout_column="1"
-        android:text="@string/today_s_work" />
+            <ImageView
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:src="@drawable/settings_icon_playstore" />
 
-    <Button
-        android:id="@+id/btn_todays_events"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="4"
-        android:layout_column="1"
-        android:text="@string/today_s_events" />
+            <Button
+                android:id="@+id/btn_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:text="@string/settings"
+                android:textColor="#DCD4D4" />
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom">
 
-</android.widget.GridLayout>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:columnCount="1"
+            android:rowCount="4">
+
+            <LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="75sp"
+                    android:layout_height="75sp"
+                    android:src="@drawable/add_icon_playstore" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:paddingTop="15sp"
+                    android:text="Add"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_add_course"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/course" />
+
+            <Button
+                android:id="@+id/btn_add_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/event" />
+
+            <Button
+                android:id="@+id/btn_add_work"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="3"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/work" />
+        </GridLayout>
+    </RelativeLayout>
+</LinearLayout>

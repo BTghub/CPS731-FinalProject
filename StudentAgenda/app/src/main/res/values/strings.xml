@@ -15,6 +15,9 @@
     <string name="today_s_events">Today\'s Events</string>
     <string name="view_rmf_profile">View RMF Profile</string>
     <string name="delete">Delete</string>
+    <string name="course">Course</string>
+    <string name="event">Event</string>
+    <string name="work">Work</string>
     <string-array name="courses">
         <item>CPS</item>
         <item>ENG</item>

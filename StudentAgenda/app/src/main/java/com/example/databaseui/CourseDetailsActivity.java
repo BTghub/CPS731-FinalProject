@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +34,10 @@ public class CourseDetailsActivity extends AppCompatActivity {
         view_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //access profile from the web
+                String profSearch = prof.replaceAll(" ", "%20");
+                //launch intent to search professor
+                Intent search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ratemyprofessors.com/search.jsp?query="+profSearch));
+                startActivity(search);
             }
         });
 
